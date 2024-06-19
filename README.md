@@ -45,8 +45,8 @@ To run the test framework, follow these steps:
 
 1. Clone the repository:
     ```
-    git clone https://github.com/dsmiles/covid-19-statistics-api.git
-    cd covid-19-statistics-api
+    git clone https://github.com/dsmiles/matillion-task
+    cd matillion-task
     ```
 
 3. Set the API_KEY environment variable (as per your OS or IDE)
