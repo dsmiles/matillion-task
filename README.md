@@ -24,13 +24,13 @@ I created some basic test classes for the controller, service and repository lev
 However, I was able to recreate the SpringBoot project on my local machine in the evening and fixed those problems (incompatible library versions). I also forgot to add the `spring-boot-starter-test` to the dependencies (which didn't help).
 
 ## Things to-do
-1. Add more error checking to the application code
-2. Add more HTTP status codes (errors, etc) 
-3. Add more application logging using log4J or something similar (better for debugging)
-4. Add more tests to each level (controller, service, repo - missing values, bad responses, etc)
-5. Add some E2E API level test cases using REST-Assured
-6. Add some security tests (unsupported HTTP verbs, missing API keys, etc)
-7. Add some performance test (isolated from external APIs)
+1. Move `parseResponse()` from repository class to service class (it's in the wrong location, better separation of concerns, etc)
+2. Use a DTO to encapsulate the response from `parseResponse()` for better type safety (cleaner) 
+3. Add more exception and error handling (include use of `Optional` instead of `null` )
+4. Add more application logging using log4J or something similar (better for debugging)
+5. Add more tests to each level (controller, service, repo - missing values, unsupported HTTP verbs, bad responses, timeouts, etc)
+6. Add some E2E API level test cases using REST-Assured or similar
+7. Add some NFR tests (performance, security, etc. as appropriate)
 
 ## Additional features
 1. Add ability to get the "best image" for a given subject. This would involve adding methods to the controller, service and repository classes to `findBy(subject)`. For example, Ocean, Tigers, Nature, Science, etc.
