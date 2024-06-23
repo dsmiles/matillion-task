@@ -1,5 +1,7 @@
-# Matillion Task
+# Matillion Task - main_branch
 June 19, 2024
+
+This is the original branch. There is a `to_do` branch containing the updates listed in the [TO-DO](#things-to-do) section below. Please switch to that branch.
 
 ## Platform
 - CoderPad.io online Test Platform
@@ -21,15 +23,16 @@ I wasn't able to complete the task within the given timeframe, but I was able to
 
 I created some basic test classes for the controller, service and repository levels, but these were not compiling due to problems with dependencies in the POM file.
 
-However, I was able to recreate the SpringBoot project on my local machine in the evening and fixed those problems (incompatible library versions). I also forgot to add the `spring-boot-starter-test` to the dependencies (which didn't help).
+However, I was able to recreate the Spring Boot project on my local machine in the evening and fixed those problems (incompatible library versions). I also forgot to add the `spring-boot-starter-test` to the dependencies (which didn't help).
 
 ## Things to-do
+_See the todo_branch for the updates._
 1. Move `parseResponse()` from repository class to service class (it's in the wrong location, better separation of concerns, etc)
-2. Use a DTO to encapsulate the response from `parseResponse()` for better type safety (cleaner) 
-3. Add more exception and error handling (include use of `Optional` instead of `null` )
+2. Refactor `parseResponse()` into smaller methods as its too complicated (cleaner)
+3. Add more exception and error handling
 4. Add more application logging using log4J or something similar (better for debugging)
-5. Add more tests to each level (controller, service, repo - missing values, unsupported HTTP verbs, bad responses, timeouts, etc)
-6. Add some E2E API level test cases using REST-Assured or similar
+5. Add more tests to each level (controller, service, repository)
+6. Add some E2E API level test cases
 7. Add some NFR tests (performance, security, etc. as appropriate)
 
 ## Additional features
@@ -49,7 +52,7 @@ To run the test framework, follow these steps:
     cd matillion-task
     ```
 
-3. Set the API_KEY environment variable (as per your OS or IDE)
+2. Set the API_KEY environment variable (as per your OS or IDE)
 
 
 3. Run the Maven test command:
