@@ -24,13 +24,13 @@ I created some basic test classes for the controller, service and repository lev
 However, I was able to recreate the SpringBoot project on my local machine in the evening and fixed those problems (incompatible library versions). I also forgot to add the `spring-boot-starter-test` to the dependencies (which didn't help).
 
 ## Things to-do
-1. Move `parseResponse()` from repository class to service class (it's in the wrong location, better separation of concerns, etc)
-2. Use a DTO to encapsulate the response from `parseResponse()` for better type safety (cleaner) 
-3. Add more exception and error handling (include use of `Optional` instead of `null` )
-4. Add more application logging using log4J or something similar (better for debugging)
-5. Add more tests to each level (controller, service, repo - missing values, unsupported HTTP verbs, bad responses, timeouts, etc)
-6. Add some E2E API level test cases using REST-Assured or similar
-7. Add some NFR tests (performance, security, etc. as appropriate)
+1. Move `parseResponse()` from repository class to service class (it's in the wrong location, better separation of concerns, etc) - DONE
+2. Refactor `parseResponse()` into smaller methods as its too complicated (cleaner) - DONE 
+3. Add more exception and error handling - DONE
+4. Add more application logging using log4J or something similar (better for debugging) - DONE
+5. Add more tests to each level (controller, service, repository) - DONE
+6. Add some E2E API level test cases - DONE
+7. Add some NFR tests (performance, security, etc. as appropriate) - TBD
 
 ## Additional features
 1. Add ability to get the "best image" for a given subject. This would involve adding methods to the controller, service and repository classes to `findBy(subject)`. For example, Ocean, Tigers, Nature, Science, etc.
@@ -60,25 +60,21 @@ To run the test framework, follow these steps:
 ## Output
 
 ```console
-2024-06-19T20:09:53.612+01:00  INFO 59417 --- [BestImage] [           main] c.g.d.b.BestImageApplicationTests        : Started BestImageApplicationTests in 2.534 seconds (process running for 8.028)
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.254 s -- in com.github.dsmiles.bestimage.BestImageApplicationTests
-[INFO] Running com.github.dsmiles.bestimage.BestImageControllerTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s -- in com.github.dsmiles.bestimage.BestImageControllerTest
 [INFO] Running com.github.dsmiles.bestimage.BestImageServiceTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s -- in com.github.dsmiles.bestimage.BestImageServiceTest
+2024-06-23T23:06:06.314+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : Response body is null or empty
+2024-06-23T23:06:06.320+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : Invalid photos node in response body
+2024-06-23T23:06:06.320+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : No suitable image found in the response body
+2024-06-23T23:06:06.326+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : No suitable image found in the response body
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in com.github.dsmiles.bestimage.BestImageServiceTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  15.769 s
-[INFO] Finished at: 2024-06-19T20:09:53+01:00
+[INFO] Total time:  13.087 s
+[INFO] Finished at: 2024-06-23T23:06:06+01:00
 [INFO] ------------------------------------------------------------------------
-david@Davids-Mac-mini BestImage % mvn clean test
 ```
-
-## Gitflow
-I might add a GitFlow CI profile to build this on a push to GitHub.
