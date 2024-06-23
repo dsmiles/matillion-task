@@ -65,21 +65,20 @@ To run the test framework, follow these steps:
 ## Output
 
 ```console
-[INFO] Running com.github.dsmiles.bestimage.BestImageServiceTest
-2024-06-23T23:06:06.314+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : Response body is null or empty
-2024-06-23T23:06:06.320+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : Invalid photos node in response body
-2024-06-23T23:06:06.320+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : No suitable image found in the response body
-2024-06-23T23:06:06.326+01:00 ERROR 39022 --- [BestImage] [           main] c.g.d.b.service.BestImageService         : No suitable image found in the response body
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in com.github.dsmiles.bestimage.BestImageServiceTest
+2024-06-23T23:29:08.538+01:00  INFO 39396 --- [BestImage] [           main] c.g.d.b.BestImageApplicationTest         : Starting BestImageApplicationTest using Java 21.0.3 with PID 39396 (started by david in /Volumes/Macintosh HDD/MyCode/BestImage)
+2024-06-23T23:29:08.539+01:00  INFO 39396 --- [BestImage] [           main] c.g.d.b.BestImageApplicationTest         : No active profile set, falling back to 1 default profile: "default"
+2024-06-23T23:29:09.169+01:00  WARN 39396 --- [BestImage] [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-06-23T23:29:09.222+01:00  INFO 39396 --- [BestImage] [           main] c.g.d.b.BestImageApplicationTest         : Started BestImageApplicationTest in 0.741 seconds (process running for 9.987)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.782 s -- in com.github.dsmiles.bestimage.BestImageApplicationTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  13.087 s
-[INFO] Finished at: 2024-06-23T23:06:06+01:00
+[INFO] Total time:  15.887 s
+[INFO] Finished at: 2024-06-23T23:29:09+01:00
 [INFO] ------------------------------------------------------------------------
 ```

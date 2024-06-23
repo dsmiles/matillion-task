@@ -56,17 +56,17 @@ public class BestImageServiceTest {
         verify(bestImageRepository).find();
     }
 
-//    @Test
-//    public void testFind_ReturnsNull_WhenRepositoryReturnsMalformedJson() {
-//        String malformedJsonResponse = "{ \"photos\": [ { \"src\": { \"original\": \"https://example.com/img1.jpg\" }, \"photographer\": \"Alice\"";
-//        when(bestImageRepository.find()).thenReturn(malformedJsonResponse);
-//
-//        String actual = bestImageService.find();
-//
-//        assertNull(actual);
-//
-//        verify(bestImageRepository).find();
-//    }
+    @Test
+    public void testFind_ReturnsNull_WhenRepositoryReturnsMalformedJson() {
+        String malformedJsonResponse = "{ \"photos\": [ { \"src\": { \"original\": \"https://example.com/img1.jpg\" }, \"photographer\": \"Alice\"";
+        when(bestImageRepository.find()).thenReturn(malformedJsonResponse);
+
+        String actual = bestImageService.find();
+
+        assertNull(actual);
+
+        verify(bestImageRepository).find();
+    }
 
     @Test
     public void testFind_ReturnsNull_WhenRepositoryReturnsEmptyJson() {
