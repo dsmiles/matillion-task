@@ -9,7 +9,9 @@ June 19, 2024
 Details of task to be added later (maybe).
 
 ## Updates to original task
-This branch contains the updates to my original code implemented for the task. This version is much better, includes cleaner code, more tests and fixes a number of issues with Mockito that I hadn't noticed. Plus spring-boot-starter-test already includes the dependencies for JUnit5, Mockito, etc.
+This branch contains the updates to my original code implemented for the task. This version is much better, includes cleaner code, more tests and fixes a number of issues with Mockito that I hadn't noticed (`spring-boot-starter-test` already includes the dependencies for JUnit5 and Mockito).
+
+_Note to self: always check your dependencies ..._
 
 The list of updates are mostly done. Item 7 will require some additional time, but I'll do that next week.
 
