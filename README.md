@@ -1,4 +1,4 @@
-# Matillion Task
+# Matillion Task - ToDo_Branch
 June 19, 2024
 
 ## Platform
@@ -8,7 +8,13 @@ June 19, 2024
 ## Details of task
 Details of task to be added later (maybe).
 
+## Updates to original task
+This branch contains the updates to my original code implemented for the task. This version is much better, includes cleaner code, more tests and fixes a number of issues with Mockito that I hadn't noticed. Plus spring-boot-starter-test already includes the dependencies for JUnit5, Mockito, etc.
+
+The list of updates are mostly done. Item 7 will require some additional time, but I'll do that next week.
+
 ## Result
+
 I wasn't able to complete the task within the given timeframe, but I was able to get the SpringBoot application to retrieve data from the Pexels REST API, extract the "best image" using the given success criteria and return a response.
 
 ```http response
@@ -21,9 +27,9 @@ I wasn't able to complete the task within the given timeframe, but I was able to
 
 I created some basic test classes for the controller, service and repository levels, but these were not compiling due to problems with dependencies in the POM file.
 
-However, I was able to recreate the SpringBoot project on my local machine in the evening and fixed those problems (incompatible library versions). I also forgot to add the `spring-boot-starter-test` to the dependencies (which didn't help).
+However, I was able to recreate the Spring Boot project on my local machine in the evening and fixed those problems (incompatible library versions). I also forgot to add the `spring-boot-starter-test` to the dependencies (which didn't help).
 
-## Things to-do
+## Things to-do (Mostly done now)
 1. Move `parseResponse()` from repository class to service class (it's in the wrong location, better separation of concerns, etc) - DONE
 2. Refactor `parseResponse()` into smaller methods as its too complicated (cleaner) - DONE 
 3. Add more exception and error handling - DONE
@@ -40,7 +46,6 @@ However, I was able to recreate the SpringBoot project on my local machine in th
 The API key has been removed from the code. It can be set via system environment variable, or from the command line. In my case, I've configured a profile within IntelliJ to set the key via System Env.
 
 ## Usage
-
 To run the test framework, follow these steps:
 
 1. Clone the repository:
@@ -49,7 +54,7 @@ To run the test framework, follow these steps:
     cd matillion-task
     ```
 
-3. Set the API_KEY environment variable (as per your OS or IDE)
+2. Set the API_KEY environment variable (as per your OS or IDE)
 
 
 3. Run the Maven test command:
