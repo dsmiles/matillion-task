@@ -47,6 +47,13 @@ However, I was able to recreate the Spring Boot project on my local machine in t
 ## API Key
 The API key has been removed from the code. It can be set via system environment variable, or from the command line. In my case, I've configured a profile within IntelliJ to set the key via System Env.
 
+## GitHub Actions
+A GitHub Actions workflow is set up to build and run tests with Maven on each push to all branches and on all pull requests. You can find the workflow file in the .github/workflows directory, named `build.yml`.
+
+An API key is stored securely within GitHub Secrets. The workflow retrieves this API key and uses it to set an environment variable during the build and test stages. This API key is required for the tests to access external services or resources.
+
+For security, the API key is not visible in the logs and is automatically obscured by GitHub.
+
 ## Usage
 To run the test framework, follow these steps:
 
@@ -82,3 +89,4 @@ To run the test framework, follow these steps:
 [INFO] Finished at: 2024-06-23T23:29:09+01:00
 [INFO] ------------------------------------------------------------------------
 ```
+
