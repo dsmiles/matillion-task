@@ -1,17 +1,12 @@
 package com.github.dsmiles.bestimage;
-//package codinpad.service;
 
-//import codinpad.repository.BestImageRepository;
 import com.github.dsmiles.bestimage.repository.BestImageRepository;
 import com.github.dsmiles.bestimage.service.BestImageService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -28,7 +23,7 @@ public class BestImageServiceTest {
     private BestImageService bestImageService;
 
     @Test
-    public void testFind_ReturnsBestImageJson_WhenRepositoryReturnsMatches() throws IOException {
+    public void testFind_ReturnsBestImageJson_WhenRepositoryReturnsMatches() {
         String validJsonResponse = "{ \"photos\": ["
             + "{ \"src\": { \"original\": \"https://example.com/img1.jpg\" }, \"photographer\": \"Alice\", \"alt\": \"A cat\" },"
             + "{ \"src\": { \"original\": \"https://example.com/img2.jpg\" }, \"photographer\": \"Bob\", \"alt\": \"A dog\" },"

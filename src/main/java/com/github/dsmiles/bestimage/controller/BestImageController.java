@@ -1,7 +1,5 @@
 package com.github.dsmiles.bestimage.controller;
-//package codinpad.controller;
 
-//import codinpad.service.BestImageService;
 import com.github.dsmiles.bestimage.service.BestImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

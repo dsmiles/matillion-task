@@ -1,5 +1,4 @@
 package com.github.dsmiles.bestimage.service;
-//package codinpad.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -8,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-//import codinpad.repository.BestImageRepository;
 import com.github.dsmiles.bestimage.repository.BestImageRepository;
 
 import java.util.Comparator;

@@ -1,5 +1,4 @@
 package com.github.dsmiles.bestimage;
-//package codinpad.repository;
 
 import com.github.dsmiles.bestimage.repository.BestImageRepository;
 import org.junit.jupiter.api.Test;

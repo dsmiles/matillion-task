@@ -1,7 +1,4 @@
 package com.github.dsmiles.bestimage;
-//package codinpad.controller;
-
-//import codinpad.service.BestImageService;
 
 import com.github.dsmiles.bestimage.controller.BestImageController;
 import com.github.dsmiles.bestimage.service.BestImageService;

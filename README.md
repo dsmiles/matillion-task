@@ -32,7 +32,7 @@ I created some basic test classes for the controller, service and repository lev
 However, I was able to recreate the Spring Boot project on my local machine in the evening and fixed those problems (incompatible library versions). I also forgot to add the `spring-boot-starter-test` to the dependencies (which didn't help).
 
 ## Things to-do (Mostly done now)
-1. Move `parseResponse()` from repository class to service class (it's in the wrong location, better separation of concerns, etc) - DONE
+1. Move `parseResponse()` from repository class to service class (it's in the wrong location, better separation of concerns, etc.) - DONE
 2. Refactor `parseResponse()` into smaller methods as its too complicated (cleaner) - DONE 
 3. Add more exception and error handling - DONE
 4. Add more application logging using log4J or something similar (better for debugging) - DONE
@@ -55,9 +55,7 @@ To run the test framework, follow these steps:
     git clone https://github.com/dsmiles/matillion-task
     cd matillion-task
     ```
-
 2. Set the API_KEY environment variable (as per your OS or IDE)
-
 
 3. Run the Maven test command:
     ```
