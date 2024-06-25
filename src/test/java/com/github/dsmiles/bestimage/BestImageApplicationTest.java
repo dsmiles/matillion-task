@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class BestImageApplicationTest {
 
     @Autowired
-    private BestImageController bestImageController;;
+    private BestImageController bestImageController;
 
     @Autowired
     private BestImageService bestImageService;
@@ -23,8 +23,8 @@ class BestImageApplicationTest {
 
     @Test
     void contextLoads() {
-        assertNotNull(bestImageController);
-        assertNotNull(bestImageService);
-        assertNotNull(bestImageRepository);
+        assertThat(bestImageController).isNotNull();
+        assertThat(bestImageService).isNotNull();
+        assertThat(bestImageRepository).isNotNull();
     }
 }
