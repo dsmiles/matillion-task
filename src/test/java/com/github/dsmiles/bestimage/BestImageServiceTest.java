@@ -1,18 +1,19 @@
 package com.github.dsmiles.bestimage;
-//package codinpad.service;
 
-//import codinpad.repository.BestImageRepository;
 import com.github.dsmiles.bestimage.repository.BestImageRepository;
 import com.github.dsmiles.bestimage.service.BestImageService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class BestImageServiceTest {
 
     @Mock
@@ -21,22 +22,67 @@ public class BestImageServiceTest {
     @InjectMocks
     private BestImageService bestImageService;
 
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
+    @Test
+    public void testFind_ReturnsBestImageJson_WhenRepositoryReturnsMatches() {
+        String validJsonResponse = "{ \"photos\": ["
+            + "{ \"src\": { \"original\": \"https://example.com/img1.jpg\" }, \"photographer\": \"Alice\", \"alt\": \"A cat\" },"
+            + "{ \"src\": { \"original\": \"https://example.com/img2.jpg\" }, \"photographer\": \"Bob\", \"alt\": \"A dog\" },"
+            + "{ \"src\": { \"original\": \"https://example.com/img3.jpg\" }, \"photographer\": \"Charlie\", \"alt\": \"A\" }"
+            + "] }";
+        when(bestImageRepository.find()).thenReturn(validJsonResponse);
+
+        String expected = "{\"url\":\"https://example.com/img3.jpg\",\"photographer\":\"Charlie\",\"alt\":\"A\"}";
+        String actual = bestImageService.find();
+
+        assertEquals(expected, actual);
+
+        verify(bestImageRepository).find();
     }
 
     @Test
-    public void testFind() {
-        // Mock repository response
-        String mockResponse = "{\"url\": \"http://example.com/bestimage.jpg\", \"photographer\": \"John Doe\", \"alt\": \"Nature\"}";
-        when(bestImageRepository.find()).thenReturn(mockResponse);
+    public void testFind_ReturnsNull_WhenRepositoryReturnsNoMatch() {
+        String noMatchJsonResponse = "{\"page\":1,\"per_page\":10,\"photos\":[],\"total_results\":0}";
+        when(bestImageRepository.find()).thenReturn(noMatchJsonResponse);
 
-        // Call the service method
-        String result = bestImageService.find();
+        String actual = bestImageService.find();
 
-        // Verify the result
-        assertEquals(mockResponse, result);
+        assertNull(actual);
+
+        verify(bestImageRepository).find();
+    }
+
+    @Test
+    public void testFind_ReturnsNull_WhenRepositoryReturnsMalformedJson() {
+        String malformedJsonResponse = "{ \"photos\": [ { \"src\": { \"original\": \"https://example.com/img1.jpg\" }, \"photographer\": \"Alice\"";
+        when(bestImageRepository.find()).thenReturn(malformedJsonResponse);
+
+        String actual = bestImageService.find();
+
+        assertNull(actual);
+
+        verify(bestImageRepository).find();
+    }
+
+    @Test
+    public void testFind_ReturnsNull_WhenRepositoryReturnsEmptyJson() {
+        String emptyJsonResponse = "{}";
+        when(bestImageRepository.find()).thenReturn(emptyJsonResponse);
+
+        String actual = bestImageService.find();
+
+        assertNull(actual);
+
+        verify(bestImageRepository).find();
+    }
+
+    @Test
+    public void testFind_ReturnsNull_WhenRepositoryReturnsNull() {
+        when(bestImageRepository.find()).thenReturn(null);
+
+        String actual = bestImageService.find();
+
+        assertNull(actual);
+
+        verify(bestImageRepository).find();
     }
 }
-

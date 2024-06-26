@@ -1,21 +1,20 @@
 package com.github.dsmiles.bestimage;
-//package codinpad.controller;
 
-//import codinpad.service.BestImageService;
 import com.github.dsmiles.bestimage.controller.BestImageController;
 import com.github.dsmiles.bestimage.service.BestImageService;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class BestImageControllerTest {
 
     @Mock
@@ -24,23 +23,28 @@ public class BestImageControllerTest {
     @InjectMocks
     private BestImageController bestImageController;
 
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
+    @Test
+    public void testGetBestImage_ReturnsBestImage_WhenResultContainValidJson() {
+        String mockResponse = "{\"url\": \"https://example.com/bestimage.jpg\", \"photographer\": \"John Doe\", \"alt\": \"Nature\"}";
+        when(bestImageService.find()).thenReturn(mockResponse);
+
+        ResponseEntity<String> responseEntity = bestImageController.getBestImage();
+
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(mockResponse, responseEntity.getBody());
+
+        verify(bestImageService).find();
     }
 
     @Test
-    public void testGetBestImage() {
-        // Mock service response
-        String mockResponse = "{\"url\": \"http://example.com/bestimage.jpg\", \"photographer\": \"John Doe\", \"alt\": \"Nature\"}";
-        when(bestImageService.find()).thenReturn(mockResponse);
+    public void testGetBestImage_ReturnsNotFound_WhenResultContainsNull() {
+        when(bestImageService.find()).thenReturn(null);
 
-        // Call the controller method
         ResponseEntity<String> responseEntity = bestImageController.getBestImage();
 
-        // Verify the response
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(mockResponse, responseEntity.getBody());
-    }
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+        assertEquals("No image found", responseEntity.getBody());
 
+        verify(bestImageService).find();
+    }
 }
