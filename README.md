@@ -1,5 +1,7 @@
-# Matillion Task - ToDo_Branch
+# Matillion Task
 June 19, 2024
+
+This is the original branch. There is a `to_do` branch containing the updates listed in the [TO-DO](#things-to-do) section below. Please switch to that branch.
 
 ## Platform
 - CoderPad.io online Test Platform
