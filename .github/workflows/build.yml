@@ -24,13 +24,19 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build and run tests with Maven
-        run: mvn clean install
+      - name: Build then run unit and integration tests with Maven
+        run: mvn clean verify
         env:
           API_KEY: ${{secrets.API_KEY}}
 
-      - name: Upload test results to GitHub
+      - name: Upload unit test results to GitHub
         uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: target/surefire-reports
+
+      - name: Upload integration test results to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: failsafe-test-results
+          path: target/failsafe-reportsmvn
